@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_navigation"
+    app:startDestination="@id/welcome">
+    <fragment
+        android:id="@+id/welcome"
+        android:name="com.szhua.pagedemo.fragment.WelcomeFragment"
+        tools:layout="@layout/welcome_fragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcome_to_loginFragment"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_welcome_to_registerFragment"
+            app:enterAnim="@anim/common_slide_in_right"
+            app:exitAnim="@anim/common_slide_out_left"
+            app:popEnterAnim="@anim/common_slide_in_left"
+            app:popExitAnim="@anim/common_slide_out_right"
+            app:destination="@id/registerFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.szhua.pagedemo.fragment.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment"
+        />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.szhua.pagedemo.fragment.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/register_fragment"
+        >
+
+        <argument
+            android:name="EMAIL"
+            android:defaultValue="2005@qq.com"
+            app:argType="string"/>
+
+    </fragment>
+</navigation>
