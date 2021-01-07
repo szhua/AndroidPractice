@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TouchDispatchActivity">
+
+
+
+    <com.szhua.pagedemo.widget.MyScrollView1
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+                <TextView
+                    android:text="sfdfsdfdsf"
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+
+            </LinearLayout>
+
+
+            <com.szhua.pagedemo.widget.MyScrollView
+                android:layout_marginTop="200dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="@color/colorAccent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="sfdfsdfdsf"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+
+                    <TextView
+                        android:text="sfdfsdfdsf"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+                    <TextView
+                        android:text="sfdfsdfdsf"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+                    <TextView
+                        android:text="sfdfsdfdsf"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+                    <TextView
+                        android:text="sfdfsdfdsf"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+                    <TextView
+                        android:text="sfdfsdfdsf"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+                    <TextView
+                        android:text="sfdfsdfdsf"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+                    <TextView
+                        android:text="sfdfsdfdsf"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+                    <TextView
+                        android:text="sfdfsdfdsf"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+                    <TextView
+                        android:text="sfdfsdfdsf"
+                        android:textColor="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+
+                </LinearLayout>
+
+
+            </com.szhua.pagedemo.widget.MyScrollView>
+
+
+        </FrameLayout>
+
+
+    </com.szhua.pagedemo.widget.MyScrollView1>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

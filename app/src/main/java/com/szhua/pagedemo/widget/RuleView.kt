@@ -4,17 +4,20 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.os.Build
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.*
 import android.widget.FrameLayout
 import android.widget.Scroller
+import androidx.annotation.RequiresApi
 import com.blankj.utilcode.util.LogUtils
 import com.szhua.pagedemo.R
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.roundToInt
 
 class RuleView : View {
 
@@ -172,7 +175,6 @@ class RuleView : View {
 
 
 
-
     constructor(context: Context):this(context, null, 0)
     constructor(context: Context, attrs: AttributeSet):this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int):super(
@@ -215,7 +217,7 @@ class RuleView : View {
         )
         minValue = ta.getFloat(R.styleable.RuleView_gv_minValue, 0f)
         maxValue = ta.getFloat(R.styleable.RuleView_gv_maxValue, 100f)
-        currentValue = ta.getFloat(R.styleable.RuleView_gv_currentValue, 50f)
+        currentValue = ta.getFloat(R.styleable.RuleView_gv_currentValue, 10f)
         gradationUnit = ta.getFloat(R.styleable.RuleView_gv_gradationUnit, .1f)
         numberPerCount = ta.getInt(R.styleable.RuleView_gv_numberPerCount, 10)
         gradationGap = ta.getDimension(R.styleable.RuleView_gv_gradationGap, dp2px(10f).toFloat())
@@ -246,6 +248,16 @@ class RuleView : View {
 
         mScroller = Scroller(context)
 
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
+
+        LogUtils.d("rulerViewDispatch",MotionEvent.actionToString(event!!.action))
+
+
+        return super.dispatchTouchEvent(event)
     }
 
 
@@ -283,6 +295,7 @@ class RuleView : View {
             mWidthRangeNumber = (mWidth / gradationGap * mNumberUnit).toInt()
         }
        setMeasuredDimension(mWidth, mHeight)
+
     }
 
 
@@ -293,7 +306,9 @@ class RuleView : View {
 
     private  var  mVelocityTracker :VelocityTracker ?= null
 
+
     override fun onTouchEvent(event: MotionEvent?): Boolean {
+
         event?.let {
             val action = it.action
             val x =it.x.toInt()
@@ -303,49 +318,48 @@ class RuleView : View {
                 mVelocityTracker = VelocityTracker.obtain()
             }
             mVelocityTracker?.addMovement(event)
-
-
             when(action){
                 MotionEvent.ACTION_DOWN -> {
                     mDownX = it.x.toInt()
                     isMoved = false
+                    LogUtils.d("down")
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    val dx = x - mLastX;
+                    LogUtils.d("move")
+                    val dx = x - mLastX
                     // 判断是否已经滑动
                     if (!isMoved) {
                         val dy = y - mLastY
                         // 滑动的触发条件：水平滑动大于垂直滑动；滑动距离大于阈值
                         isMoved = abs(dx) > abs(dy) && abs(x - mDownX) >= TOUCH_SLOP
+                    }else{
+                        mCurrentDistance += -dx.toFloat()
+                        calculateValue()
                     }
-                    mCurrentDistance += -dx.toFloat()
-                    calculateValue()
                 }
                 MotionEvent.ACTION_UP -> {
+                    //计算；
                     mVelocityTracker?.computeCurrentVelocity(1000, MAX_FLING_VELOCITY.toFloat())
                     val xVelocity = mVelocityTracker?.xVelocity
-                    xVelocity?.let { it ->
-                        if (abs(it) < MIN_FLING_VELOCITY) {
+
+                    xVelocity?.let { x ->
+                        if (abs(x) < MIN_FLING_VELOCITY) {
                             // 滑动刻度
                             scrollToGradation()
                         } else {
-
                             // 速度具有方向性，需要取反
                             mScroller.fling(
-                                mCurrentDistance.toInt(), 0, (-xVelocity).toInt(), 0,
+                                mCurrentDistance.toInt(), 0, (-x).toInt(), 0,
                                 0, mNumberRangeDistance.toInt(), 0, 0
                             )
                             invalidate()
                         }
                     }
-
-
                 }
             }
             mLastX = x
             mLastY = y
         }
-
         return  true
     }
 
@@ -364,8 +378,9 @@ class RuleView : View {
 
 
 
+    //矫正；
     private fun scrollToGradation() {
-        mCurrentNumber = mMinNumber + Math.round(mCurrentDistance / gradationGap) * mNumberUnit
+        mCurrentNumber = mMinNumber + (mCurrentDistance / gradationGap).roundToInt() * mNumberUnit
         mCurrentNumber = min(max(mCurrentNumber, mMinNumber), mMaxNumber)
         mCurrentDistance = (mCurrentNumber - mMinNumber) / mNumberUnit * gradationGap
         currentValue = mCurrentNumber / 10f
@@ -385,7 +400,6 @@ class RuleView : View {
 
 
     override fun onDraw(canvas: Canvas?) {
-        LogUtils.d("onDraw")
         canvas?.apply {
             this.drawColor(bgColor)
             /// indicators ;
@@ -395,8 +409,9 @@ class RuleView : View {
             //this.drawLine(0f,0f,mWidth.toFloat(),0f,mPaint)
             this.drawLine(0f, topLineY, mWidth.toFloat(), topLineY, mPaint)
 
+
             var startNumber = (mCurrentDistance -mHalfWidth).toInt()/gradationGap.toInt()*mNumberUnit+mMinNumber
-            val expendUnit = startNumber shl 1
+            val expendUnit = mNumberUnit shl 1
             startNumber-=expendUnit
             if(startNumber<mMinNumber){
                 startNumber = mMinNumber
@@ -412,7 +427,6 @@ class RuleView : View {
 
             while (startNumber<=rightMaxNum){
                 // 短刻度
-
                 if(startNumber%perUnitCount==0){
 
                     // 长刻度：刻度宽度为短刻度的2倍

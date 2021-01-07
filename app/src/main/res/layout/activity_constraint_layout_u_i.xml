@@ -16,19 +16,33 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent"/>
 
-   <com.szhua.pagedemo.widget.MyLayout
+   <com.szhua.pagedemo.widget.MyVW
+       android:id="@+id/mylayout"
+       android:orientation="vertical"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        android:layout_width="match_parent"
-       android:layout_height="100dp">
+       android:layout_height="400dp">
+
+       <View
+           android:layout_height="40dp"
+           android:layout_width="200dp"
+           android:background="@color/colorAccent"/>
+
+       <Button
+           android:text="111"
+           android:background="@color/colorPrimary"
+           android:layout_width="100dp"
+           android:layout_height="50dp"/>
 
       <com.szhua.pagedemo.widget.RuleView
           android:paddingLeft="100dp"
+          android:id="@+id/rowview"
           android:layout_width="match_parent"
           app:zjun_gradationColor="@color/blue_btn_bg_color"
           android:layout_height="80dp"/>
-   </com.szhua.pagedemo.widget.MyLayout>
+   </com.szhua.pagedemo.widget.MyVW>
 
    <androidx.recyclerview.widget.RecyclerView
        android:background="@color/warning_stroke_color"
@@ -39,14 +53,29 @@
        app:layoutManager="com.szhua.pagedemo.widget.FLowLayoutManager"
        android:layout_height="wrap_content"/>
 
-   <Button
+  <LinearLayout
+      android:id="@+id/changeLines"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      android:layout_width="300dp"
+      android:gravity="end|bottom"
+      android:layout_height="300dp">
+     <Button
+         android:id="@+id/info"
+         android:text="ChangeLines"
+         android:layout_width="80dp"
+         android:layout_height="80dp"/>
+
+
+  </LinearLayout>
+
+   <ImageView
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintStart_toStartOf="parent"
-       android:layout_marginStart="20dp"
-       android:layout_marginBottom="20dp"
-       android:id="@+id/changeLines"
-       android:text="ChangeLines"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"/>
+       android:id="@+id/imageview"
+       android:visibility="gone"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
