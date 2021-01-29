@@ -2,13 +2,16 @@ package com.szhua.pagedemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
+import android.os.Handler
+import android.os.MessageQueue
+import android.view.*
+import android.widget.ScrollView
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,6 +25,13 @@ class MainActivity : AppCompatActivity() {
                 else -> iv_camera.visibility = View.GONE
             }
         }
+
+
+
+
+
+
+
 
     }
 

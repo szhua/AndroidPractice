@@ -29,6 +29,13 @@ public class MyLayout extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
+
+    @Override
+    public void computeScroll() {
+        LogUtils.d("computeScroll");
+        super.computeScroll();
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -38,22 +45,14 @@ public class MyLayout extends LinearLayout {
         return handled;
     }
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return  super.onInterceptTouchEvent(ev) ;
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         String name = MotionEvent.actionToString(event.getAction()) ;
         LogUtils.d("myLayout",name);
-        return true;
+        return super.onTouchEvent(event);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        LogUtils.d("parentLayoutRedraw");
-    }
+
 }

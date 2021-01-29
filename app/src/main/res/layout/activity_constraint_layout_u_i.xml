@@ -53,9 +53,9 @@
        app:layoutManager="com.szhua.pagedemo.widget.FLowLayoutManager"
        android:layout_height="wrap_content"/>
 
-  <LinearLayout
+  <com.szhua.pagedemo.widget.MyLayout
       android:id="@+id/changeLines"
-      android:visibility="gone"
+      android:visibility="visible"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       android:layout_width="300dp"
@@ -68,7 +68,7 @@
          android:layout_height="80dp"/>
 
 
-  </LinearLayout>
+  </com.szhua.pagedemo.widget.MyLayout>
 
    <ImageView
        app:layout_constraintBottom_toBottomOf="parent"

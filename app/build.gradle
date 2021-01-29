@@ -21,7 +21,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -101,6 +101,7 @@ dependencies {
     // 日志调试：https://github.com/getActivity/Logcat
     debugImplementation 'com.hjq:logcat:3.2'
 
+    implementation 'com.alibaba:fastjson:1.1.72.android'
 
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
 

@@ -41,6 +41,11 @@ class LoginActivity : AppCompatActivity() {
             permissionRequestCount = it.getInt(KEY_PERMISSIONS_REQUEST_COUNT, 0)
         }
 
+
+
+
+
+
         // 获取权限
         requestPermissionsIfNecessary()
 
@@ -48,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
 
 
 

@@ -15,6 +15,7 @@ class MyScrollView1(context: Context?, attrs: AttributeSet?) : ScrollView(contex
         isNestedScrollingEnabled =true
     }
 
+    // final int range = computeVerticalScrollRange() - computeVerticalScrollExtent();
 
 
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {

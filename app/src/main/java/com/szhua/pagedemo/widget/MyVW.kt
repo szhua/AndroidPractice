@@ -18,7 +18,6 @@ class MyVW : LinearLayout {
 
     private var mDragState = 0
 
-
     val STATE_IDLE = 0
 
     /**

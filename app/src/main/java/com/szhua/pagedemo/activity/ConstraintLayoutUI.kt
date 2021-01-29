@@ -1,46 +1,62 @@
 package com.szhua.pagedemo.activity
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.ScrollView
-import android.widget.TextView
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
+import android.view.OrientationEventListener
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
 import com.blankj.utilcode.util.LogUtils
 import com.szhua.pagedemo.R
-import com.szhua.pagedemo.adapter.FavoriteShoeAdapter2
-import com.szhua.pagedemo.adapter.MyTagAdapter
 import com.szhua.pagedemo.common.BaseConstant.SP_USER_ID
 import com.szhua.pagedemo.utils.AppPrefsUtils
 import com.szhua.pagedemo.viewmodel.CustomViewModelProvider
 import com.szhua.pagedemo.viewmodel.FavoriteShoeModel
-import com.szhua.pagedemo.widget.FLowLayoutManager
-import com.szhua.pagedemo.widget.MyFrameLayout
-import com.szhua.pagedemo.widget.MyView
 import kotlinx.android.synthetic.main.activity_constraint_layout_u_i.*
 
 
 class ConstraintLayoutUI : AppCompatActivity() {
 
+
+
     private val  favoriteShoeModel:FavoriteShoeModel  by  viewModels{
          CustomViewModelProvider.providerFavoriteModel(this, AppPrefsUtils.getLong(SP_USER_ID))
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_constraint_layout_u_i)
 
-        changeLines.setOnClickListener {
-            changeLines.scrollBy(50,50)
-            changeLines.animate().scaleX(0.8f)
+
+
+
+       val handler =   object :Handler(Looper.myLooper()!!,
+           Callback { false }){
+           override fun handleMessage(msg: Message) {
+               super.handleMessage(msg)
+               LogUtils.d("ss")
+           }
+       }
+        handler.postAtTime({},1000)
+        handler.dispatchMessage(handler.obtainMessage())
+        handler.sendMessage(handler.obtainMessage())
+
+        Looper.myQueue().addIdleHandler {
+            false }
+
+
+
+
+
+        var listener =object:OrientationEventListener(this){
+            override fun onOrientationChanged(orientation: Int) {
+                LogUtils.d(orientation)
+            }
         }
 
-        info.setOnClickListener {
-            LogUtils.d(it)
-        }
+
 
 //
 //        view_pager.orientation = ORIENTATION_HORIZONTAL
